@@ -51,7 +51,7 @@ backendYoloLSA/
 - Dataset propio recolectado manualmente.
 - Etiquetado con Roboflow.
 - Formato YOLO (.jpg + .txt).
-- Mínimo 30 imágenes por clase.
+- Mínimo 80 - 90 imágenes por clase.
 link del DataSet
 https://drive.google.com/drive/folders/1dz0fM5kLfVIK8mcz5TBbyh8ZMujQkTD0?usp=sharing
 
