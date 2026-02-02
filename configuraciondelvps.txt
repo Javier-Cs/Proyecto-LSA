@@ -1,0 +1,62 @@
+-- activamos el entorno virtual en el vps
+source venv/bin/activate
+
+-- creamos el archivo de configuracion .service
+nano /etc/systemd/system/yoloLSA_backend.service
+
+-- configuracion del archivo
+cat /etc/systemd/system/yoloLSA_backend.service
+
+-- contenido
+[Unit]
+Description=YOLO LSA Backend (FastAPI)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/var/www/backendYoloLSA
+ExecStart=/var/www/backendYoloLSA/venv/bin/gunicorn \
+  -k uvicorn.workers.UvicornWorker \
+  -w 1 \
+  -b 127.0.0.1:8000 \
+  main:app
+
+Restart=always
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
+
+-------------
+systemctl daemon-reexec
+systemctl enable yoloLSA_backend
+systemctl start yoloLSA_backend
+systemctl status yoloLSA_backend
+
+
+-- archivo de configuracion .confg
+nano /etc/nginx/sites-available/yoloLSA_ngix
+
+-- contenido
+cat /etc/nginx/sites-available/yoloLSA_ngix
+
+server {
+    listen 80;
+    server_name _;
+
+    client_max_body_size 10M;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_http_version 1.1;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        proxy_read_timeout 300;
+        proxy_connect_timeout 300;
+        proxy_send_timeout 300;
+    }
+}
