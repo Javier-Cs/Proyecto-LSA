@@ -18,10 +18,12 @@ Desarrollar un sistema funcional de **detección de objetos** capaz de:
 ## 🧩 Arquitectura general
 
 App móvil (.NET MAUI)
+
         │
         │  (envío de imágenes / frames)
         ▼
 Backend FastAPI (Python + YOLOv8)
+
         │
         ▼
 Modelo entrenado (best.pt)
