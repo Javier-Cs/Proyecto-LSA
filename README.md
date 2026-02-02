@@ -69,12 +69,14 @@ Versión seleccionada: YOLOv8
 Ejemplo:
 
 from ultralytics import YOLO
+uso de 2361 imagenes de etiquetado para el entrenamiento
+uso de 100 epoch 
 
 model = YOLO("yolov8n.pt")
 
 model.train(
     data="data.yaml",
-    epochs=50,
+    epochs=100,
     imgsz=416,
     batch=4,
     device="cpu"
