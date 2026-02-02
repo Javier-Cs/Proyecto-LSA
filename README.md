@@ -31,10 +31,15 @@ Modelo entrenado (best.pt)
 ## 📁 Estructura del proyecto
 
 backendYoloLSA/
+
 ├── best.pt
+
 ├── main.py
+
 ├── requirements.txt
+
 ├── README.md
+
 └── runs/
 
 ---
