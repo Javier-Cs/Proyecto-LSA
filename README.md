@@ -56,6 +56,10 @@ link del DataSet
 https://drive.google.com/drive/folders/1dz0fM5kLfVIK8mcz5TBbyh8ZMujQkTD0?usp=sharing
 
 
+Link de api funcional:
+
+
+
 ---
 
 ## 🧠 Modelo y entrenamiento
